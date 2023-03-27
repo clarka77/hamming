@@ -24,7 +24,17 @@
 
 declare(strict_types=1);
 
-function distance(string $strandA, string $strandB): int
-{
-    throw new \BadFunctionCallException("Implement the distance function");
+function distance(string $strandA, string $strandB): int {
+    if (strlen($strandA) == strlen($strandB)){
+        $answer = 0;
+        for ($x = 0; $x < strlen($strandA); $x++) {
+            if ($strandA[$x] != $strandB[$x]) {
+                $answer++;
+            }
+        }
+        return $answer;
+    }
+    else {
+        throw new InvalidArgumentException('DNA strands must be of equal length.');
+    }
 }
